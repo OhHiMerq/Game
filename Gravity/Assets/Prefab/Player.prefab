@@ -13,8 +13,8 @@ GameObject:
   - component: {fileID: 7665432054251449140}
   - component: {fileID: 7665432054251449143}
   - component: {fileID: 7665432054251449147}
-  - component: {fileID: 6301023595910387526}
   - component: {fileID: 7665432054251449146}
+  - component: {fileID: 1050071692602242624}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -151,24 +151,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
---- !u!255 &6301023595910387526
-FixedJoint2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7665432054251449145}
-  m_Enabled: 0
-  serializedVersion: 4
-  m_EnableCollision: 0
-  m_ConnectedRigidBody: {fileID: 0}
-  m_BreakForce: Infinity
-  m_BreakTorque: Infinity
-  m_AutoConfigureConnectedAnchor: 1
-  m_Anchor: {x: 0, y: 0}
-  m_ConnectedAnchor: {x: -9.7, y: -13.63}
-  m_DampingRatio: 0
-  m_Frequency: 0
 --- !u!114 &7665432054251449146
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -193,6 +175,24 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 512
   SensorSquash: 0.96
+--- !u!255 &1050071692602242624
+FixedJoint2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7665432054251449145}
+  m_Enabled: 0
+  serializedVersion: 4
+  m_EnableCollision: 0
+  m_ConnectedRigidBody: {fileID: 0}
+  m_BreakForce: Infinity
+  m_BreakTorque: Infinity
+  m_AutoConfigureConnectedAnchor: 1
+  m_Anchor: {x: 0, y: 0}
+  m_ConnectedAnchor: {x: -11.92, y: -5.19}
+  m_DampingRatio: 0
+  m_Frequency: 0
 --- !u!1 &7665432055383890772
 GameObject:
   m_ObjectHideFlags: 0

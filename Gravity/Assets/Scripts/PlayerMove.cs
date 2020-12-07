@@ -65,7 +65,8 @@ public class PlayerMove : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.LeftShift) && IsOnGround)
         {
-            OnGravityEffect(this, EventArgs.Empty);
+            //OnGravityEffect(this, EventArgs.Empty);
+            ChangeGravity();
         }
 
 
@@ -82,8 +83,6 @@ public class PlayerMove : MonoBehaviour
         PlayerJumpForce();
 
         Tosquash();
-        
-
     }
 
 
