@@ -248,6 +248,7 @@ public class PlayerMove : MonoBehaviour
     {
         Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(GroundChecker.position, Radius); //Visual circle for ground checker
+
         Gizmos.color = Color.cyan;
         Gizmos.DrawLine(transform.position, transform.position + (transform.right * SensorPush)); //Visual line for Pushing
     }
