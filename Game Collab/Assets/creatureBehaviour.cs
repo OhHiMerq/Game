@@ -14,8 +14,8 @@ public class creatureBehaviour : MonoBehaviour
             StopCoroutine("movingIdle");
             if (_idleMove)
             {
-                StartCoroutine(movingIdle());
-                Debug.Log("Run the coroutine");
+                StartCoroutine("movingIdle");
+                //Debug.Log("Run the coroutine");
             }
                 
             
@@ -52,15 +52,12 @@ public class creatureBehaviour : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-       /* Debug.DrawLine(transform.position, transform.position - (Quaternion.Euler(0, 0, 45) * transform.right * cliffDetect), Color.green);
-        Debug.DrawLine(transform.position, transform.position - (Quaternion.Euler(0, 0, 135) * transform.right * cliffDetect), Color.green);*/
-
         if (Input.GetKeyDown(KeyCode.M))
         {
             idleMove = !idleMove;
         }
 
-        //interfereObstacle();
+        interfereObstacle();
         OnGroundBehaviour();
     }
 
@@ -80,7 +77,11 @@ public class creatureBehaviour : MonoBehaviour
         Debug.DrawLine(originRay + (Vector2)transform.up * senseObstacleOriginYOffset, (transform.position + transform.up * senseObstacleOriginYOffset) - (transform.right * sizeRay), Color.yellow);/*leftB Raycast*/
         Debug.DrawLine(originRay + (Vector2)transform.up * -senseObstacleOriginYOffset, (transform.position + transform.up * -senseObstacleOriginYOffset) + (transform.right * sizeRay), Color.yellow);/*rightA Raycast*/
         Debug.DrawLine(originRay + (Vector2)transform.up * senseObstacleOriginYOffset, (transform.position + transform.up * senseObstacleOriginYOffset) + (transform.right * sizeRay), Color.yellow);/*rightB Raycast*/
-        
+
+
+        /*Debug.DrawLine(transform.position, transform.position - (Quaternion.Euler(0, 0, 45) * transform.right * cliffDetect), Color.green);
+        Debug.DrawLine(transform.position, transform.position - (Quaternion.Euler(0, 0, 135) * transform.right * cliffDetect), Color.green);*/
+
         if (leftA.collider != null || leftB.collider != null || rightA.collider != null || rightB.collider != null)
         {
             obstacleSensed = true;
@@ -92,15 +93,15 @@ public class creatureBehaviour : MonoBehaviour
 
         if (obstacleSensedLastUpdate == false && obstacleSensed)
         {
-            idleMove = true; // <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< problem
+            idleMove = true;
+            
         }
         obstacleSensedLastUpdate = obstacleSensed;
     }
     IEnumerator movingIdle() // yung gala gala lang
     {
-        
         float interval = Random.Range(1.5f, 7f);
-        Debug.Log("start new coroutine with "+interval+" interval");
+        Debug.Log("start new coroutine with " + interval + " interval");
         yield return new WaitForSeconds(interval);
         // shoot two rays, get two x values 
         Vector3 originRay = transform.position;
@@ -143,7 +144,6 @@ public class creatureBehaviour : MonoBehaviour
         }
 
         //Debug.Log("Enemy will go to: " + dir + " to: "+targetX+" from between " + leftX +" and " +rightX+"; with offset of "+colliderBoundOffset);
-
         // have a x velocity towards the direction 
         // if near to that x value na then assign new value for nextfire.
         while (!isPosPassedXTarget(dir,transform.position.x,targetX))
@@ -154,11 +154,11 @@ public class creatureBehaviour : MonoBehaviour
         }
 
 
-        
-        StartCoroutine(movingIdle());
+
+        idleMove = true;
+        //Debug.Log("redo coroutine");
 
     }
-
     bool isPosPassedXTarget(float dir,float xPos,float xTarget)
     {
         if (dir > 0) // dir 1
