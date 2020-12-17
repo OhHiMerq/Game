@@ -95,6 +95,8 @@ GameObject:
   - component: {fileID: 1428446035548613742}
   - component: {fileID: 7581419639609406178}
   - component: {fileID: 2922048058111882515}
+  - component: {fileID: 8936060331997524071}
+  - component: {fileID: 7019841621751987195}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -131,6 +133,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   faceRight: 1
   moveSpeed: 250
+  SensorToPull: 5
 --- !u!114 &1428446035548613742
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -195,3 +198,38 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1.0658967, y: 1.4452991}
   m_EdgeRadius: 0
+--- !u!70 &8936060331997524071
+CapsuleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7581419639609406180}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0.049290895, y: 0.013783038}
+  m_Size: {x: 0.9162345, y: 1.4653436}
+  m_Direction: 0
+--- !u!232 &7019841621751987195
+DistanceJoint2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7581419639609406180}
+  m_Enabled: 1
+  serializedVersion: 4
+  m_EnableCollision: 0
+  m_ConnectedRigidBody: {fileID: 0}
+  m_BreakForce: Infinity
+  m_BreakTorque: Infinity
+  m_AutoConfigureConnectedAnchor: 0
+  m_Anchor: {x: 0, y: 0}
+  m_ConnectedAnchor: {x: 0, y: 0}
+  m_AutoConfigureDistance: 1
+  m_Distance: 5.258156
+  m_MaxDistanceOnly: 0

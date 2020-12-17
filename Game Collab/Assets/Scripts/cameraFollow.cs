@@ -14,7 +14,7 @@ public class cameraFollow : MonoBehaviour
     private Vector3 velocity = Vector3.zero;
 
     // Update is called once per frame
-    void LateUpdate()
+    void FixedUpdate()
     {
         Vector3 targetPos = cameraTarget.position + offset;
         transform.position = Vector3.SmoothDamp(transform.position,targetPos,ref velocity, damp);

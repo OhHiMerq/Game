@@ -11,10 +11,17 @@ public class playerBehaviour : MonoBehaviour
     public float groundDistance; // raycast distance between feet and ground
     float lastTapTime;
 
-    // Start is called before the first frame update
+    private DistanceJoint2D distanceJoint;
+    [SerializeField] private float SensorToPull = 0.6f;
+    private bool toPullBool = false;
+    public bool globalPullBool { get { return toPullBool; } }
+
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+
+        distanceJoint = GetComponent<DistanceJoint2D>();
+        distanceJoint.enabled = false;
     }
 
     // Update is called once per frame
@@ -22,12 +29,15 @@ public class playerBehaviour : MonoBehaviour
     {
         OnGroundBehaviour();
 
-        if (Input.GetKeyDown(KeyCode.Space) && GetComponent<playerBehaviour>().onGround)
+        if (Input.GetKeyDown(KeyCode.Space) && onGround)
         {
             SwitchGravity();
-
         }
+
+
+        ToPull();
     }
+
 
     public void SwitchGravity()
     {
@@ -51,5 +61,32 @@ public class playerBehaviour : MonoBehaviour
         }
     }
 
+    void ToPull()
+    {
+        RaycastHit2D hitBoxFront = Physics2D.Raycast(transform.position, transform.right, SensorToPull);
 
+        if (Input.GetKey(KeyCode.E) && hitBoxFront && onGround)
+        {
+            toPullBool = true;
+
+            if (hitBoxFront.collider.gameObject.CompareTag("Crate"))
+            {
+                distanceJoint.enabled = true;
+                distanceJoint.connectedBody = hitBoxFront.collider.GetComponent<Rigidbody2D>();
+            }
+        }
+        else
+        {
+            distanceJoint.connectedBody = null;
+            distanceJoint.enabled = false;
+
+            toPullBool = false;
+        }
+    }
+
+    private void OnDrawGizmosSelected()
+    {
+        Gizmos.color = Color.yellow;
+        Gizmos.DrawLine(transform.position, transform.position + (transform.right * SensorToPull));
+    }
 }

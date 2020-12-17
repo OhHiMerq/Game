@@ -103,6 +103,7 @@ public class creatureBehaviour : MonoBehaviour
         float interval = Random.Range(1.5f, 7f);
         Debug.Log("start new coroutine with " + interval + " interval");
         yield return new WaitForSeconds(interval);
+
         // shoot two rays, get two x values 
         Vector3 originRay = transform.position;
         Vector3 directionRay = Vector3.right; // hindi ito transform.right kasi pag nag rotate yung transform, pati yung ranges iikot 
