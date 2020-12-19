@@ -40,6 +40,8 @@ public class creatureBehaviour : MonoBehaviour
     public bool onGround = false;
     public LayerMask platformLayers;
     public float groundDistance; // raycast distance between feet and ground
+    [Space]
+    public float kickForce;
 
 
     // Start is called before the first frame update
@@ -57,50 +59,55 @@ public class creatureBehaviour : MonoBehaviour
             idleMove = !idleMove;
         }
 
+
         interfereObstacle();
         OnGroundBehaviour();
     }
 
     void interfereObstacle()
     {
-        Vector2 originRay = (Vector2)transform.position;
-        float sizeRay = senseObstacleLength;
-        Vector3 directionRay = transform.right;
-
-        RaycastHit2D leftA = Physics2D.Raycast(originRay + (Vector2)transform.up * -senseObstacleOriginYOffset, -directionRay, sizeRay, obstacleLayers);
-        RaycastHit2D leftB = Physics2D.Raycast(originRay + (Vector2)transform.up * senseObstacleOriginYOffset, -directionRay, sizeRay, obstacleLayers);
-        RaycastHit2D rightA = Physics2D.Raycast(originRay + (Vector2)transform.up * -senseObstacleOriginYOffset, directionRay, sizeRay, obstacleLayers);
-        RaycastHit2D rightB = Physics2D.Raycast(originRay + (Vector2)transform.up * senseObstacleOriginYOffset, directionRay, sizeRay, obstacleLayers);
-
-
-        Debug.DrawLine(originRay + (Vector2)transform.up * -senseObstacleOriginYOffset, (transform.position + transform.up * -senseObstacleOriginYOffset) - (transform.right * sizeRay), Color.yellow);/*leftA Raycast*/
-        Debug.DrawLine(originRay + (Vector2)transform.up * senseObstacleOriginYOffset, (transform.position + transform.up * senseObstacleOriginYOffset) - (transform.right * sizeRay), Color.yellow);/*leftB Raycast*/
-        Debug.DrawLine(originRay + (Vector2)transform.up * -senseObstacleOriginYOffset, (transform.position + transform.up * -senseObstacleOriginYOffset) + (transform.right * sizeRay), Color.yellow);/*rightA Raycast*/
-        Debug.DrawLine(originRay + (Vector2)transform.up * senseObstacleOriginYOffset, (transform.position + transform.up * senseObstacleOriginYOffset) + (transform.right * sizeRay), Color.yellow);/*rightB Raycast*/
-
-
-        /*Debug.DrawLine(transform.position, transform.position - (Quaternion.Euler(0, 0, 45) * transform.right * cliffDetect), Color.green);
-        Debug.DrawLine(transform.position, transform.position - (Quaternion.Euler(0, 0, 135) * transform.right * cliffDetect), Color.green);*/
-
-        if (leftA.collider != null || leftB.collider != null || rightA.collider != null || rightB.collider != null)
+        if (idleMove)
         {
-            obstacleSensed = true;
-        }
-        else
-        {
-            obstacleSensed = false;
-        }
+            Vector2 originRay = (Vector2)transform.position;
+            float sizeRay = senseObstacleLength;
+            Vector3 directionRay = transform.right;
 
-        if (obstacleSensedLastUpdate == false && obstacleSensed)
-        {
-            idleMove = true;
-            
+            RaycastHit2D leftA = Physics2D.Raycast(originRay + (Vector2)transform.up * -senseObstacleOriginYOffset, -directionRay, sizeRay, obstacleLayers);
+            RaycastHit2D leftB = Physics2D.Raycast(originRay + (Vector2)transform.up * senseObstacleOriginYOffset, -directionRay, sizeRay, obstacleLayers);
+            RaycastHit2D rightA = Physics2D.Raycast(originRay + (Vector2)transform.up * -senseObstacleOriginYOffset, directionRay, sizeRay, obstacleLayers);
+            RaycastHit2D rightB = Physics2D.Raycast(originRay + (Vector2)transform.up * senseObstacleOriginYOffset, directionRay, sizeRay, obstacleLayers);
+
+
+            Debug.DrawLine(originRay + (Vector2)transform.up * -senseObstacleOriginYOffset, (transform.position + transform.up * -senseObstacleOriginYOffset) - (transform.right * sizeRay), Color.yellow);/*leftA Raycast*/
+            Debug.DrawLine(originRay + (Vector2)transform.up * senseObstacleOriginYOffset, (transform.position + transform.up * senseObstacleOriginYOffset) - (transform.right * sizeRay), Color.yellow);/*leftB Raycast*/
+            Debug.DrawLine(originRay + (Vector2)transform.up * -senseObstacleOriginYOffset, (transform.position + transform.up * -senseObstacleOriginYOffset) + (transform.right * sizeRay), Color.yellow);/*rightA Raycast*/
+            Debug.DrawLine(originRay + (Vector2)transform.up * senseObstacleOriginYOffset, (transform.position + transform.up * senseObstacleOriginYOffset) + (transform.right * sizeRay), Color.yellow);/*rightB Raycast*/
+
+
+            /*Debug.DrawLine(transform.position, transform.position - (Quaternion.Euler(0, 0, 45) * transform.right * cliffDetect), Color.green);
+            Debug.DrawLine(transform.position, transform.position - (Quaternion.Euler(0, 0, 135) * transform.right * cliffDetect), Color.green);*/
+
+            if (leftA.collider != null || leftB.collider != null || rightA.collider != null || rightB.collider != null)
+            {
+                obstacleSensed = true;
+            }
+            else
+            {
+                obstacleSensed = false;
+            }
+
+            if (obstacleSensedLastUpdate == false && obstacleSensed)
+            {
+                idleMove = true;
+
+            }
+            obstacleSensedLastUpdate = obstacleSensed;
         }
-        obstacleSensedLastUpdate = obstacleSensed;
+        
     }
     IEnumerator movingIdle() // yung gala gala lang
     {
-        float interval = Random.Range(1.5f, 7f);
+        float interval = Random.Range(2f, 7f);
         Debug.Log("start new coroutine with " + interval + " interval");
         yield return new WaitForSeconds(interval);
 
@@ -114,19 +121,36 @@ public class creatureBehaviour : MonoBehaviour
         Debug.DrawLine(transform.position, transform.position - (transform.right * travelMaxLength), Color.green);
         Debug.DrawLine(transform.position, transform.position + (transform.right * travelMaxLength), Color.green);
 
+        float colliderBoundOffset = (GetComponent<Collider2D>().bounds.size.x / 2) + 0.5f;
         float leftX = (originRay - (directionRay * travelMaxLength)).x;
         float rightX = (originRay + (directionRay * travelMaxLength)).x;
         if (leftHit.collider != null)
         {
             leftX = leftHit.point.x;
+            if (leftHit.transform.gameObject.layer == 10) // 10. Crate 
+            {
+                Debug.Log("There is an activated box sa left");
+                StartCoroutine(throwDetectedCrate(leftHit.transform.gameObject,leftX + colliderBoundOffset));
+                idleMove = false;
+                yield return null;
+                // start doing the thing to the crate
+            }
         }
         if (rightHit.collider != null)
         {
             rightX = rightHit.point.x;
+            if (rightHit.transform.gameObject.layer == 10) // 10. Crate 
+            {
+                Debug.Log("There is an activated box sa right");
+                StartCoroutine(throwDetectedCrate(rightHit.transform.gameObject,rightX - colliderBoundOffset));
+                idleMove = false;
+                yield return null;
+                // start doing the thing to the crate
+            }
         }
 
+
         // random between two x values
-        float colliderBoundOffset = (GetComponent<Collider2D>().bounds.size.x / 2) + 0.5f;
         float targetX = Random.Range(leftX + colliderBoundOffset, rightX - colliderBoundOffset);
 
         // get the direction if left or right 
@@ -155,9 +179,9 @@ public class creatureBehaviour : MonoBehaviour
         }
 
 
-
+        Debug.Log("redo walking idle coroutine");
         idleMove = true;
-        //Debug.Log("redo coroutine");
+        
 
     }
     bool isPosPassedXTarget(float dir,float xPos,float xTarget)
@@ -171,6 +195,36 @@ public class creatureBehaviour : MonoBehaviour
             return xPos <= xTarget;
         }
         return false;
+    }
+
+    IEnumerator throwDetectedCrate(GameObject crateObj,float _targetX)
+    {
+
+        float dir = Mathf.Sign(-(transform.position.x - _targetX));
+
+
+        if (dir > 0 && faceRight)
+        {
+            //WalkLeft Direction
+            faceDirection();
+        }
+        else if (dir < 0 && !faceRight)
+        {
+            //WalkRight Direction
+            faceDirection(); 
+        }
+
+        while (!isPosPassedXTarget(dir, transform.position.x, _targetX))
+        {
+            GetComponent<Rigidbody2D>().velocity = new Vector2(moveSpeed * dir * Time.deltaTime, GetComponent<Rigidbody2D>().velocity.y);
+            //Debug.Log("moving");
+            yield return null;
+        }
+
+
+        Debug.Log("Object go to detected object");
+        crateObj.GetComponent<Rigidbody2D>().AddForce(new Vector2(dir*kickForce,kickForce),ForceMode2D.Impulse);
+        idleMove = true;
     }
 
     void OnGroundBehaviour()
