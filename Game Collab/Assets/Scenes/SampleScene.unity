@@ -512,6 +512,10 @@ PrefabInstance:
       propertyPath: canPressThis.m_Bits
       value: 3072
       objectReference: {fileID: 0}
+    - target: {fileID: 9140115521318543188, guid: 2715323d92c7c4a4ea3f91114330e89a, type: 3}
+      propertyPath: m_SortingOrder
+      value: -1
+      objectReference: {fileID: 0}
     - target: {fileID: 9140115521318543189, guid: 2715323d92c7c4a4ea3f91114330e89a, type: 3}
       propertyPath: m_LocalPosition.x
       value: 1.68
@@ -1259,6 +1263,23 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1018727417 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8685674736576302608, guid: 968eaa648bc334942b56f1bcb17e2d65, type: 3}
+  m_PrefabInstance: {fileID: 1074531374}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1018727421
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1018727417}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d24e5ca9c2a932444b85825e421fa50d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1074531374
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1382,6 +1403,23 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1139692539 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8685674736576302608, guid: 968eaa648bc334942b56f1bcb17e2d65, type: 3}
+  m_PrefabInstance: {fileID: 1836280773}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1139692543
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1139692539}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d24e5ca9c2a932444b85825e421fa50d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1143550155
 GameObject:
   m_ObjectHideFlags: 0
@@ -2277,11 +2315,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 420628694410743422, guid: 9712f721a7eb567459970838ac89db1f, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.7
+      value: -3.54
       objectReference: {fileID: 0}
     - target: {fileID: 420628694410743422, guid: 9712f721a7eb567459970838ac89db1f, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.15
+      value: 0.96
       objectReference: {fileID: 0}
     - target: {fileID: 420628694410743422, guid: 9712f721a7eb567459970838ac89db1f, type: 3}
       propertyPath: m_LocalPosition.z
@@ -2404,6 +2442,10 @@ PrefabInstance:
     - target: {fileID: 9140115521318543186, guid: 2715323d92c7c4a4ea3f91114330e89a, type: 3}
       propertyPath: canPressThis.m_Bits
       value: 1024
+      objectReference: {fileID: 0}
+    - target: {fileID: 9140115521318543188, guid: 2715323d92c7c4a4ea3f91114330e89a, type: 3}
+      propertyPath: m_SortingOrder
+      value: -1
       objectReference: {fileID: 0}
     - target: {fileID: 9140115521318543189, guid: 2715323d92c7c4a4ea3f91114330e89a, type: 3}
       propertyPath: m_LocalPosition.x

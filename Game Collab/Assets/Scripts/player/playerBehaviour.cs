@@ -1,20 +1,26 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 public class playerBehaviour : MonoBehaviour
 {
     private Rigidbody2D rb;
-    [Space]
+
+    public event EventHandler OnGravityEffect;
+
+    [Header("On Ground Settings")]
     public bool onGround = false;
     public LayerMask platformLayers;
     public float groundDistance; // raycast distance between feet and ground
     float lastTapTime;
 
-    private DistanceJoint2D distanceJoint;
-    [SerializeField] private float SensorToPull = 0.6f;
+    [Header("Pull Settings")]
     private bool toPullBool = false;
     public bool globalPullBool { get { return toPullBool; } }
+    private DistanceJoint2D distanceJoint;
+    [SerializeField] private float SensorToPull = 0.6f;
+    
 
     void Start()
     {
@@ -22,26 +28,26 @@ public class playerBehaviour : MonoBehaviour
 
         distanceJoint = GetComponent<DistanceJoint2D>();
         distanceJoint.enabled = false;
+
+        OnGravityEffect += PlayerBehaviour_OnGravityEffect; //Subscribe to Eventhandler
     }
 
-    // Update is called once per frame
+
     void Update()
     {
         OnGroundBehaviour();
+        ToPull();
+
 
         if (Input.GetKeyDown(KeyCode.Space) && onGround)
         {
-            SwitchGravity();
+            OnGravityEffect(this,EventArgs.Empty);
         }
-
-
-        ToPull();
     }
 
-
-    public void SwitchGravity()
+    private void PlayerBehaviour_OnGravityEffect(object sender, EventArgs e)
     {
-        gravityEffect.instance.SwitchGravity(rb);
+        SwitchingGravityEffect.instance.Switch(rb, true);
     }
 
     void OnGroundBehaviour()
@@ -52,7 +58,6 @@ public class playerBehaviour : MonoBehaviour
         if (hit.collider != null)
         {
             onGround = true;
-           //transform.up = hit.normal;
             transform.rotation = Quaternion.FromToRotation(transform.up, hit.normal) * transform.rotation;
         }
         else
