@@ -3527,6 +3527,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DoorOpen: 0
+--- !u!114 &834397432 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 9140115521318543186, guid: 2715323d92c7c4a4ea3f91114330e89a, type: 3}
+  m_PrefabInstance: {fileID: 9140115520250417824}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: caa9a6409ae6f4e499904a3da08e72b6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &861407466
 GameObject:
   m_ObjectHideFlags: 0
@@ -4457,6 +4468,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1112407910083061724, guid: f5023df59cd30b743991dea6032287fe, type: 3}
+      propertyPath: plate
+      value: 
+      objectReference: {fileID: 834397432}
     - target: {fileID: 1112407910083061726, guid: f5023df59cd30b743991dea6032287fe, type: 3}
       propertyPath: m_Name
       value: pusher

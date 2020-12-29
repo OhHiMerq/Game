@@ -8,7 +8,9 @@ public class pusherBehaviour : MonoBehaviour
     public float pushEffectTime;
     public LayerMask toPushLayers;
     public float detectionLength;
-
+    public PressurePlate plate;
+    private List<GameObject> triggerObj = new List<GameObject>();
+    private Dictionary<GameObject, bool> pushCoroutineObj = new Dictionary<GameObject, bool>();
     // Start is called before the first frame update
     void Start()
     {
@@ -18,31 +20,45 @@ public class pusherBehaviour : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
-    }
-
-    private void FixedUpdate()
-    {
-      /*
-        RaycastHit2D hit = Physics2D.Raycast(transform.position, transform.right, detectionLength, toPushLayers);
-        Debug.DrawLine(transform.position, transform.position + (transform.right * detectionLength), Color.green);
-        if (hit.collider != null)
+        if (plate.plateStatus)
         {
-            Debug.Log(hit.transform.name);
-            //hit.transform.gameObject.GetComponent<Rigidbody2D>().AddForce(transform.right * pushStrength,ForceMode2D.Impulse);
-            StartCoroutine(PushObject(pushEffectTime, hit.transform.gameObject.GetComponent<Rigidbody2D>()));
-        }*/
+            for (int i = 0; i < triggerObj.Count; i++)
+            {
+                if (!pushCoroutineObj[triggerObj[i]])
+                {
+                    StartCoroutine(PushObject(pushEffectTime, triggerObj[i].GetComponent<Rigidbody2D>(), i));
+                }
+
+            }
+        }
     }
     
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (Contains(toPushLayers,collision.gameObject.layer))
         {
-            //collision.gameObject.GetComponent<Rigidbody2D>().AddForce(transform.right * pushStrength, ForceMode2D.Impulse);
-            GetComponent<Animator>().Play("pushAnim");
-            StartCoroutine(PushObject(pushEffectTime, collision.gameObject.GetComponent<Rigidbody2D>()));
+            if (!triggerObj.Contains(collision.gameObject))
+            {
+                triggerObj.Add(collision.gameObject);
+                //Debug.Log("Key Added: " + triggerObj.IndexOf(collision.gameObject));
+                pushCoroutineObj.Add(collision.gameObject, false);
+            }
         }
     }
+
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (Contains(toPushLayers, collision.gameObject.layer))
+        {
+            if (triggerObj.Contains(collision.gameObject))
+            {
+                pushCoroutineObj.Remove(collision.gameObject);
+                //Debug.Log("Key Removed: " + triggerObj.IndexOf(collision.gameObject));
+                triggerObj.Remove(collision.gameObject);
+            }
+        }
+    }
+
 
     public static bool Contains(LayerMask mask, int layer)
     {
@@ -51,9 +67,11 @@ public class pusherBehaviour : MonoBehaviour
     
 
 
-    IEnumerator PushObject(float timeLeft,Rigidbody2D rbToPush)
+    IEnumerator PushObject(float timeLeft,Rigidbody2D rbToPush,int i)
     {
-        Debug.Log("StartCoroutine");
+        pushCoroutineObj[triggerObj[i]] = true;
+        //Debug.Log("StartCoroutine");
+        GetComponent<Animator>().Play("pushAnim");
 
         DisableVelocityEffectScripts(rbToPush.transform);
 
@@ -67,6 +85,14 @@ public class pusherBehaviour : MonoBehaviour
         }
 
         DisableVelocityEffectScripts(rbToPush.transform);
+
+        
+        if (triggerObj.Count > 0 && triggerObj[i] != null)  // dadaan dito pag yung object ay kahit na push na ay nasa harap parin ng pusher. then mag rurun ulit yung coroutine sa kanya
+        {
+            pushCoroutineObj[triggerObj[i]] = false;
+        }
+        
+
     }
 
     void DisableVelocityEffectScripts(Transform obj)
