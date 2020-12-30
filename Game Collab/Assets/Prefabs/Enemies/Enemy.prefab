@@ -27,7 +27,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 420628694410743420}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.92, y: -1.39, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 420628695863519677}
@@ -81,6 +81,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 256
   groundDistance: 2
+  kickForce: 0
 --- !u!70 &4029088504165992156
 CapsuleCollider2D:
   m_ObjectHideFlags: 0

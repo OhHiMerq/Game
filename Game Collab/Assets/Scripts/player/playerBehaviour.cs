@@ -9,6 +9,8 @@ public class playerBehaviour : MonoBehaviour
 
     public event EventHandler OnGravityEffect;
 
+    public float FallDamageHeight;
+
     [Header("On Ground Settings")]
     public bool onGround = false;
     public LayerMask platformLayers;
