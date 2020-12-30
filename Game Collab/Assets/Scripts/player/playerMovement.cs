@@ -5,7 +5,6 @@ using UnityEngine;
 public class playerMovement : MonoBehaviour
 {
     private playerBehaviour PB;
-
     [SerializeField] private bool faceRight = true;
     [SerializeField] private float moveSpeed;
     private Vector2 moveDir;
@@ -24,7 +23,7 @@ public class playerMovement : MonoBehaviour
 
     void Update()
     {
-        //moveDir.x = Input.GetAxisRaw("Horizontal");
+        moveDir.x = Input.GetAxisRaw("Horizontal");
         moveDir.x = SimpleInput.GetAxisRaw("Horizontal");
 
         //if(Mathf.Abs(SimpleInput.GetAxis("Horizontal")) > 0)

@@ -48,9 +48,14 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+<<<<<<< HEAD
   - name: Enemy
     uniqueID: 3965787947
     locked: 0
   - name: Players
     uniqueID: 3135563831
+=======
+  - name: levelObj
+    uniqueID: 233177131
+>>>>>>> 3f5aeb5394be84ab500e74adc84bfe843de63b77
     locked: 0
