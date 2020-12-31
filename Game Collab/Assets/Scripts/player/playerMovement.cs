@@ -10,14 +10,22 @@ public class playerMovement : MonoBehaviour
     private Vector2 moveDir;
     private Rigidbody2D rb;
 
-    
-    
-    
+
+    [Header("Disable Movement Velocity Influence")]
+    public bool canMove;
+    public bool willMove;
+
+
+
+
+
+
+
     void Start()
     {
         PB = GetComponent<playerBehaviour>();
         rb = GetComponent<Rigidbody2D>();
-
+        canMove = true;
         Physics2D.queriesStartInColliders = false;
     }
 
@@ -37,7 +45,20 @@ public class playerMovement : MonoBehaviour
     }
     void FixedUpdate()
     {
-        Move(moveDir);
+        if (canMove && willMove)
+        {
+            Move(moveDir);
+        }
+
+        
+        if (Mathf.Abs(moveDir.x) > 0f || GetComponent<playerBehaviour>().onGround)
+        {
+            willMove = true;
+        }
+        else
+        {
+            willMove = false;
+        }
     }
 
 
@@ -61,5 +82,19 @@ public class playerMovement : MonoBehaviour
     {
         faceRight = !faceRight;
         transform.Rotate(0, 180, 0);
+    }
+
+
+    public void DisableMovementForTime(float time)
+    {
+        StopCoroutine("disableMove");
+        StartCoroutine(disableMove(time));
+    }
+    IEnumerator disableMove(float _time)
+    {
+        canMove = false;
+        willMove = false;
+        yield return new WaitForSeconds(_time);
+        canMove = true;
     }
 }

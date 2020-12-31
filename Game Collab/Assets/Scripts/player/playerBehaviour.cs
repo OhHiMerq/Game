@@ -22,7 +22,6 @@ public class playerBehaviour : MonoBehaviour
     public bool globalPullBool { get { return toPullBool; } }
     private DistanceJoint2D distanceJoint;
     [SerializeField] private float SensorToPull = 0.6f;
-    
 
     void Start()
     {

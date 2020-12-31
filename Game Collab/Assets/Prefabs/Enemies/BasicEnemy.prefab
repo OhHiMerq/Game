@@ -156,3 +156,9 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 5943
   squashFeedbackStrength: 5.5
+  bumpSensorLength: 0.8
+  CanBeBumped:
+    serializedVersion: 2
+    m_Bits: 1
+  bumpStrength: 75
+  bumpPlayerTimeLength: 0.25

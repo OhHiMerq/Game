@@ -99,7 +99,7 @@ public class pusherBehaviour : MonoBehaviour
     {
         if (obj.GetComponent<playerMovement>()) // if meron 
         {
-            Debug.Log("Velocity script");
+            //Debug.Log("Velocity script");
             obj.GetComponent<playerMovement>().enabled = !obj.GetComponent<playerMovement>().enabled;
         }
     }

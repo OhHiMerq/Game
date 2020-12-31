@@ -71,7 +71,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1367109203
-  m_SortingLayer: -1
+  m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 74021237de87b5b4ea2a3a0f1515fdba, type: 3}
   m_Color: {r: 0.14978641, g: 0.9622642, b: 0.6930473, a: 1}
@@ -125,4 +125,4 @@ MonoBehaviour:
   thisBoxCollider: {fileID: 0}
   canPressThis:
     serializedVersion: 2
-    m_Bits: 1024
+    m_Bits: 1

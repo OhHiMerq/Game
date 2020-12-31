@@ -132,6 +132,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   faceRight: 1
   moveSpeed: 250
+  canMove: 0
+  willMove: 0
 --- !u!114 &1428446035548613742
 MonoBehaviour:
   m_ObjectHideFlags: 0

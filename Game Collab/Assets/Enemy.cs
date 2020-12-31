@@ -21,6 +21,12 @@ public class Enemy : MonoBehaviour
     public LayerMask CanSquashMe;
     public float squashFeedbackStrength;
 
+    [Header("On the way Sensor")]
+    public float bumpSensorLength;
+    public LayerMask CanBeBumped;
+    public float bumpStrength;
+    public float bumpPlayerTimeLength; // meron ganto kasi hindi magamitan ng add force yung player dahil may nakaset lagi sa velocity neto;
+
     public virtual void Start()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -36,7 +42,7 @@ public class Enemy : MonoBehaviour
     public virtual void FixedUpdate()
     {
         Movement();
-
+        PushObjOnMyWay();
         SquashLiftObjDetector();
     }
 
@@ -94,7 +100,7 @@ public class Enemy : MonoBehaviour
         
     }
 
-    void BounceObjThatSquashed(GameObject obj)
+    void BounceObjThatSquashed(GameObject obj) // 1 
     {
         if (obj.GetComponent<Rigidbody2D>())
         {
@@ -117,10 +123,20 @@ public class Enemy : MonoBehaviour
         }
     }
 
+    void PushObjOnMyWay()
+    {
+        RaycastHit2D detectOnFace = Physics2D.Raycast(transform.position, transform.right, bumpSensorLength, CanBeBumped);
+        Debug.DrawLine(transform.position, transform.position + (transform.right *bumpSensorLength), Color.green);
 
-
-
-
-
-
+        if (detectOnFace.collider != null && detectOnFace.collider.gameObject.GetComponent<Rigidbody2D>())
+        {
+            Vector2 dir = (detectOnFace.point - (Vector2)transform.position).normalized;
+            if (detectOnFace.collider.tag == "Player")
+            {
+                detectOnFace.collider.gameObject.GetComponent<playerMovement>().DisableMovementForTime(bumpPlayerTimeLength);
+            }
+            detectOnFace.collider.gameObject.GetComponent<Rigidbody2D>().AddForce(dir * bumpStrength * 10 * Time.deltaTime,ForceMode2D.Impulse);
+        }
+    }
+    
 }
