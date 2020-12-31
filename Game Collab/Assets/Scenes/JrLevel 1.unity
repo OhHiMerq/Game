@@ -292,18 +292,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 5706182211442070871, guid: f252f33a304add04c9084fcf4b2cf9b5, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 0.85586
-      objectReference: {fileID: 0}
-    - target: {fileID: 5706182211442070871, guid: f252f33a304add04c9084fcf4b2cf9b5, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 0.85586
-      objectReference: {fileID: 0}
-    - target: {fileID: 5706182211442070871, guid: f252f33a304add04c9084fcf4b2cf9b5, type: 3}
-      propertyPath: m_LocalScale.z
-      value: 0.85586
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f252f33a304add04c9084fcf4b2cf9b5, type: 3}
 --- !u!1001 &212133573
@@ -592,18 +580,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1861363408, guid: 25661765b3e261340aecd5e3444f9ccb, type: 3}
-      propertyPath: m_SortingLayerID
-      value: -1159403465
-      objectReference: {fileID: 0}
-    - target: {fileID: 1861363408, guid: 25661765b3e261340aecd5e3444f9ccb, type: 3}
-      propertyPath: m_SortingLayer
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 1428446035548613742, guid: 25661765b3e261340aecd5e3444f9ccb, type: 3}
-      propertyPath: FallDamageHeight
-      value: 7.5
-      objectReference: {fileID: 0}
     - target: {fileID: 7581419639609406179, guid: 25661765b3e261340aecd5e3444f9ccb, type: 3}
       propertyPath: m_LocalPosition.x
       value: -3.64

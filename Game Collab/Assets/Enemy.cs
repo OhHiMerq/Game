@@ -19,7 +19,7 @@ public class Enemy : MonoBehaviour
     [Header("Squash Sensor")]
     public float SquashLenght;
     public LayerMask CanSquashMe;
-
+    public float squashFeedbackStrength;
 
     public virtual void Start()
     {
@@ -87,11 +87,22 @@ public class Enemy : MonoBehaviour
     {
         if (SquashLiftObjDetector() != null)
         {
+            BounceObjThatSquashed(SquashLiftObjDetector());
             Death();
+            
         }
         
     }
 
+    void BounceObjThatSquashed(GameObject obj)
+    {
+        if (obj.GetComponent<Rigidbody2D>())
+        {
+            obj.GetComponent<Rigidbody2D>().AddForce(transform.up * squashFeedbackStrength,ForceMode2D.Impulse);
+        }
+    }
+
+    
 
     public virtual void Death()
     {
