@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1861363407}
   - component: {fileID: 1861363408}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: playerSprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -96,7 +96,7 @@ GameObject:
   - component: {fileID: 7581419639609406178}
   - component: {fileID: 8936060331997524071}
   - component: {fileID: 7019841621751987195}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Player
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -150,7 +150,7 @@ MonoBehaviour:
   onGround: 0
   platformLayers:
     serializedVersion: 2
-    m_Bits: 256
+    m_Bits: 1
   groundDistance: 2
   SensorToPull: 1
 --- !u!50 &7581419639609406178

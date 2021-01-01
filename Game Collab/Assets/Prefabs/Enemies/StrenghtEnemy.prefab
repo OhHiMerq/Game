@@ -155,7 +155,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -329179349
-  m_SortingLayer: 1
+  m_SortingLayer: 0
   m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: 92a64cff0a71e0b43907491042eb966a, type: 3}
   m_Color: {r: 0.990566, g: 0.28789163, b: 0.22895159, a: 1}
@@ -233,11 +233,12 @@ MonoBehaviour:
   WallSensor: 0.5
   WallDetect:
     serializedVersion: 2
-    m_Bits: 13056
+    m_Bits: 1
   SquashLenght: 1
   CanSquashMe:
     serializedVersion: 2
-    m_Bits: 1024
+    m_Bits: 768
+  squashFeedbackStrength: 0
   InFrontSight: 1
   ThrowTimer: 3
   ThrowForce: 400

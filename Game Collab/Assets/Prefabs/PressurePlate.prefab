@@ -125,4 +125,4 @@ MonoBehaviour:
   thisBoxCollider: {fileID: 0}
   canPressThis:
     serializedVersion: 2
-    m_Bits: 1
+    m_Bits: 768
