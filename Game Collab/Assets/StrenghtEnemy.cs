@@ -57,7 +57,7 @@ public class StrenghtEnemy : Enemy
         {
             StopMoving = true;
 
-            Physics2D.IgnoreLayerCollision(12, 11, true);
+            Physics2D.IgnoreLayerCollision(11, 9, true);
             
 
             if (_throwTimer > 0)
@@ -71,7 +71,7 @@ public class StrenghtEnemy : Enemy
         }
         else
         {
-            Physics2D.IgnoreLayerCollision(12, 11, false);
+            Physics2D.IgnoreLayerCollision(11, 9, false);
 
             if (!InFrontDetect)
             {
@@ -109,7 +109,7 @@ public class StrenghtEnemy : Enemy
             {
                 Rigidbody2D _obj = HitObj.collider.gameObject?.GetComponent<Rigidbody2D>();
                 ThrowObject(_obj, new Vector2(-transform.right.x, 1));
-                Physics2D.IgnoreLayerCollision(12, 10, true);
+                Physics2D.IgnoreLayerCollision(11, 8, true);
 
 
                 StartCoroutine(ResetThrow());
@@ -128,7 +128,7 @@ public class StrenghtEnemy : Enemy
     {
         yield return new WaitForSeconds(.5f);
         _throwTimer = ThrowTimer;
-        Physics2D.IgnoreLayerCollision(12, 10, false);
+        Physics2D.IgnoreLayerCollision(11, 8, false);
     }
     
 

@@ -95,7 +95,7 @@ GameObject:
   - component: {fileID: 5776894985439715998}
   - component: {fileID: 5776894985439715999}
   - component: {fileID: 5776894985439715996}
-  m_Layer: 12
+  m_Layer: 11
   m_Name: StrenghtEnemy
   m_TagString: Untagged
   m_Icon: {fileID: 0}

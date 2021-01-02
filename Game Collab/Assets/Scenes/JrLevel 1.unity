@@ -498,6 +498,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: PressurePlate (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 9140115521318543186, guid: 2715323d92c7c4a4ea3f91114330e89a, type: 3}
+      propertyPath: canPressThis.m_Bits
+      value: 256
+      objectReference: {fileID: 0}
     - target: {fileID: 9140115521318543189, guid: 2715323d92c7c4a4ea3f91114330e89a, type: 3}
       propertyPath: m_LocalPosition.x
       value: -6.71
@@ -1138,6 +1142,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: PressurePlate (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 9140115521318543186, guid: 2715323d92c7c4a4ea3f91114330e89a, type: 3}
+      propertyPath: canPressThis.m_Bits
+      value: 256
+      objectReference: {fileID: 0}
     - target: {fileID: 9140115521318543189, guid: 2715323d92c7c4a4ea3f91114330e89a, type: 3}
       propertyPath: m_LocalPosition.x
       value: -6.71
@@ -1265,6 +1273,10 @@ PrefabInstance:
     - target: {fileID: 9140115521318543185, guid: 2715323d92c7c4a4ea3f91114330e89a, type: 3}
       propertyPath: m_Name
       value: PressurePlate
+      objectReference: {fileID: 0}
+    - target: {fileID: 9140115521318543186, guid: 2715323d92c7c4a4ea3f91114330e89a, type: 3}
+      propertyPath: canPressThis.m_Bits
+      value: 256
       objectReference: {fileID: 0}
     - target: {fileID: 9140115521318543189, guid: 2715323d92c7c4a4ea3f91114330e89a, type: 3}
       propertyPath: m_LocalPosition.x

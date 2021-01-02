@@ -707,15 +707,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5776894985439715996, guid: 76e3b936a6fdc6743a5eb1bec7f019b7, type: 3}
       propertyPath: WallDetect.m_Bits
-      value: 1
+      value: 1025
       objectReference: {fileID: 0}
     - target: {fileID: 5776894985439715996, guid: 76e3b936a6fdc6743a5eb1bec7f019b7, type: 3}
       propertyPath: CanSquashMe.m_Bits
-      value: 768
+      value: 256
       objectReference: {fileID: 0}
     - target: {fileID: 5776894985439715997, guid: 76e3b936a6fdc6743a5eb1bec7f019b7, type: 3}
       propertyPath: m_Name
       value: StrenghtEnemy
+      objectReference: {fileID: 0}
+    - target: {fileID: 5776894985439715997, guid: 76e3b936a6fdc6743a5eb1bec7f019b7, type: 3}
+      propertyPath: m_Layer
+      value: 11
       objectReference: {fileID: 0}
     - target: {fileID: 5776894985439715998, guid: 76e3b936a6fdc6743a5eb1bec7f019b7, type: 3}
       propertyPath: m_IsTrigger
