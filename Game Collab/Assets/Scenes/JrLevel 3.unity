@@ -789,7 +789,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5706182211442070867, guid: f252f33a304add04c9084fcf4b2cf9b5, type: 3}
       propertyPath: CanSquashMe.m_Bits
-      value: 256
+      value: 768
       objectReference: {fileID: 0}
     - target: {fileID: 5706182211442070871, guid: f252f33a304add04c9084fcf4b2cf9b5, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1259,7 +1259,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5706182211442070867, guid: f252f33a304add04c9084fcf4b2cf9b5, type: 3}
       propertyPath: CanSquashMe.m_Bits
-      value: 256
+      value: 768
       objectReference: {fileID: 0}
     - target: {fileID: 5706182211442070871, guid: f252f33a304add04c9084fcf4b2cf9b5, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1320,7 +1320,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5706182211442070867, guid: f252f33a304add04c9084fcf4b2cf9b5, type: 3}
       propertyPath: CanSquashMe.m_Bits
-      value: 256
+      value: 768
       objectReference: {fileID: 0}
     - target: {fileID: 5706182211442070871, guid: f252f33a304add04c9084fcf4b2cf9b5, type: 3}
       propertyPath: m_LocalPosition.x

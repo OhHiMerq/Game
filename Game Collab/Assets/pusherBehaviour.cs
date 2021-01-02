@@ -7,7 +7,6 @@ public class pusherBehaviour : MonoBehaviour
     public float pushStrength;
     public float pushEffectTime;
     public LayerMask toPushLayers;
-    public float detectionLength;
     public PressurePlate plate;
     private List<GameObject> triggerObj = new List<GameObject>();
     private Dictionary<GameObject, bool> pushCoroutineObj = new Dictionary<GameObject, bool>();
@@ -79,7 +78,7 @@ public class pusherBehaviour : MonoBehaviour
         {
             
             timeLeft -= Time.deltaTime;
-            rbToPush.AddForce(transform.right * pushStrength, ForceMode2D.Impulse);
+            rbToPush.AddForce(transform.right * pushStrength * Time.deltaTime, ForceMode2D.Impulse);
             yield return null;  
 
         }
